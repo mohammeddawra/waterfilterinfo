@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Free Water Quality Test - Check Your Home Water in 60 Seconds</title>
+    <meta name="description" content="Get a free water quality test for your home. Find out what's in your tap water. No obligation, takes 2 minutes. Available in your area.">
+
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID_HERE');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" 
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/></noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1a5fb4; --primary-dark: #0d3d7a; --accent: #2ec27e;
+            --accent-light: #8ff0a4; --warning: #e01b24; --text: #1c1c1c;
+            --text-light: #5e5e5e; --bg: #ffffff; --bg-light: #f6f8fc;
+            --bg-dark: #e4e9f2; --border: #c0c5ce;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text); background: var(--bg); line-height: 1.6; overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Sticky Header */
+        .sticky-header {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.98); backdrop-filter: blur(10px);
+            z-index: 1000; padding: 12px 20px; display: flex;
+            justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            transform: translateY(-100%); transition: transform 0.3s ease;
+        }
+        .sticky-header.visible { transform: translateY(0); }
+        .sticky-logo { font-weight: 800; font-size: 18px; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .sticky-cta {
+            background: var(--warning); color: white; border: none;
+            padding: 10px 20px; border-radius: 50px; font-weight: 700;
+            font-size: 14px; cursor: pointer; animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a5fb4 0%, #0d3d7a 100%);
+            min-height: 100vh; display: flex; align-items: center;
+            position: relative; overflow: hidden; padding: 100px 20px 60px;
+        }
+        .hero-container {
+            max-width: 1200px; margin: 0 auto; display: grid;
+            grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+            position: relative; z-index: 1;
+        }
+        @media (max-width: 768px) {
+            .hero-container { grid-template-columns: 1fr; gap: 40px; }
+            .hero { padding: 120px 20px 40px; }
+        }
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900;
+            color: white; line-height: 1.1; margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .hero-content .highlight { color: var(--accent-light); position: relative; }
+        .hero-content .highlight::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+            height: 4px; background: var(--accent); border-radius: 2px;
+        }
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem); color: rgba(255,255,255,0.9);
+            margin-bottom: 30px; line-height: 1.5;
+        }
+        .urgency-bar {
+            background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+            border-radius: 12px; padding: 16px 20px; margin-bottom: 30px;
+            display: flex; align-items: center; gap: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .urgency-bar .icon { font-size: 24px; }
+        .urgency-bar p { color: white; font-size: 14px; font-weight: 600; }
+        .urgency-bar .spots { color: var(--accent-light); font-weight: 800; }
+
+        .trust-badges { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 30px; }
+        .trust-badge {
+            display: flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.15); padding: 8px 16px;
+            border-radius: 50px; color: white; font-size: 13px; font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Form Card */
+        .form-card {
+            background: white; border-radius: 20px; padding: 40px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3); max-width: 480px; margin: 0 auto;
+        }
+        @media (max-width: 768px) { .form-card { padding: 28px 20px; } }
+        .form-header { text-align: center; margin-bottom: 28px; }
+        .form-header h2 { font-size: 1.5rem; color: var(--text); margin-bottom: 8px; }
+        .form-header p { color: var(--text-light); font-size: 14px; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+        .form-group input {
+            width: 100%; padding: 14px 16px; border: 2px solid var(--border);
+            border-radius: 12px; font-size: 16px; transition: all 0.2s; background: var(--bg-light);
+        }
+        .form-group input:focus { outline: none; border-color: var(--primary); background: white; box-shadow: 0 0 0 4px rgba(26, 95, 180, 0.1); }
+        .form-group input.error { border-color: var(--warning); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+        .submit-btn {
+            width: 100%; padding: 18px;
+            background: linear-gradient(135deg, var(--accent) 0%, #26a269 100%);
+            color: white; border: none; border-radius: 12px; font-size: 18px;
+            font-weight: 800; cursor: pointer; transition: all 0.2s; margin-top: 8px;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(46, 194, 126, 0.4);
+        }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(46, 194, 126, 0.5); }
+        .submit-btn:active { transform: translateY(0); }
+        .form-footer {
+            text-align: center; margin-top: 16px; font-size: 12px;
+            color: var(--text-light); display: flex; align-items: center;
+            justify-content: center; gap: 6px;
+        }
+
+        /* Sections */
+        .section { padding: 80px 20px; }
+        .section-container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; color: var(--text); margin-bottom: 16px; }
+        .section-header p { font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto; }
+
+        /* Problem Cards */
+        .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .problem-card {
+            background: white; border-radius: 16px; padding: 32px;
+            border: 1px solid var(--border); transition: all 0.3s;
+            position: relative; overflow: hidden;
+        }
+        .problem-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 4px; background: var(--warning); border-radius: 16px 16px 0 0;
+        }
+        .problem-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+        .problem-icon { font-size: 48px; margin-bottom: 16px; }
+        .problem-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+        .problem-card p { color: var(--text-light); font-size: 15px; line-height: 1.6; }
+        .stat-highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white; border-radius: 16px; padding: 40px; text-align: center; grid-column: 1 / -1;
+        }
+        @media (min-width: 768px) { .stat-highlight { grid-column: span 2; } }
+        .stat-number { font-size: 4rem; font-weight: 900; color: var(--accent-light); line-height: 1; margin-bottom: 8px; }
+        .stat-label { font-size: 1.1rem; opacity: 0.9; }
+
+        /* Solution Steps */
+        .solution-section { background: var(--bg-light); }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px; margin-bottom: 60px; }
+        .step { text-align: center; position: relative; }
+        .step-number {
+            width: 60px; height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; font-size: 1.5rem; font-weight: 800;
+            margin: 0 auto 20px; box-shadow: 0 8px 20px rgba(26, 95, 180, 0.3);
+        }
+        .step h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; }
+        .step p { color: var(--text-light); font-size: 15px; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .feature {
+            display: flex; align-items: flex-start; gap: 12px;
+            background: white; padding: 20px; border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .feature-check {
+            width: 24px; height: 24px; background: var(--accent); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 14px; flex-shrink: 0; margin-top: 2px;
+        }
+        .feature p { font-size: 15px; color: var(--text); font-weight: 500; }
+
+        /* Reviews */
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .review-card {
+            background: white; border-radius: 16px; padding: 32px;
+            border: 1px solid var(--border); position: relative;
+        }
+        .review-card::before {
+            content: '"'; position: absolute; top: 16px; left: 20px;
+            font-size: 60px; color: var(--primary); opacity: 0.1;
+            font-family: Georgia, serif; line-height: 1;
+        }
+        .stars { color: #f5c211; font-size: 18px; margin-bottom: 12px; letter-spacing: 2px; }
+        .review-text { font-size: 15px; color: var(--text); line-height: 1.6; margin-bottom: 20px; position: relative; z-index: 1; }
+        .reviewer { display: flex; align-items: center; gap: 12px; }
+        .reviewer-avatar {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: 700; font-size: 18px;
+        }
+        .reviewer-info h4 { font-size: 15px; font-weight: 700; }
+        .reviewer-info p { font-size: 13px; color: var(--text-light); }
+        .verified-badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: var(--accent-light); color: #1b7a4e; font-size: 12px;
+            font-weight: 700; padding: 4px 10px; border-radius: 50px; margin-top: 4px;
+        }
+        .overall-rating {
+            text-align: center; margin-bottom: 40px; padding: 32px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 16px; color: white;
+        }
+        .overall-rating .big-number { font-size: 4rem; font-weight: 900; line-height: 1; }
+        .overall-rating .stars-big { font-size: 28px; color: #f5c211; margin: 12px 0; letter-spacing: 4px; }
+        .overall-rating p { opacity: 0.9; font-size: 1.1rem; }
+
+        /* Urgency Section */
+        .urgency-section {
+            background: linear-gradient(135deg, var(--warning) 0%, #b71c1c 100%);
+            color: white; text-align: center;
+        }
+        .urgency-section h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 20px; }
+        .countdown-container { display: flex; justify-content: center; gap: 16px; margin: 32px 0; flex-wrap: wrap; }
+        .countdown-box {
+            background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);
+            border-radius: 12px; padding: 20px 24px; min-width: 80px;
+        }
+        .countdown-number { font-size: 2.5rem; font-weight: 900; line-height: 1; display: block; }
+        .countdown-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; margin-top: 4px; }
+        .spots-remaining {
+            font-size: 1.25rem; font-weight: 700; margin-top: 24px; padding: 16px;
+            background: rgba(255,255,255,0.15); border-radius: 12px; display: inline-block;
+        }
+        .spots-remaining .number { font-size: 2rem; font-weight: 900; color: var(--accent-light); }
+        .neighbor-alert {
+            margin-top: 24px; font-size: 15px; opacity: 0.9;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .neighbor-alert .pulse-dot {
+            width: 10px; height: 10px; background: var(--accent-light);
+            border-radius: 50%; animation: blink 1.5s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        /* FAQ */
+        .faq-section { background: var(--bg-light); }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item {
+            background: white; border-radius: 12px; margin-bottom: 12px;
+            overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .faq-question {
+            width: 100%; padding: 20px 24px; background: none; border: none;
+            text-align: left; font-size: 16px; font-weight: 700; color: var(--text);
+            cursor: pointer; display: flex; justify-content: space-between;
+            align-items: center; transition: background 0.2s;
+        }
+        .faq-question:hover { background: var(--bg-light); }
+        .faq-question .icon { font-size: 20px; transition: transform 0.3s; color: var(--primary); }
+        .faq-item.active .faq-question .icon { transform: rotate(180deg); }
+        .faq-answer {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 24px;
+        }
+        .faq-item.active .faq-answer { max-height: 300px; padding: 0 24px 20px; }
+        .faq-answer p { color: var(--text-light); line-height: 1.6; font-size: 15px; }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white; text-align: center; padding: 80px 20px;
+        }
+        .final-cta h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 900; margin-bottom: 16px; }
+        .final-cta p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .final-cta-btn {
+            display: inline-block; padding: 20px 48px;
+            background: linear-gradient(135deg, var(--accent) 0%, #26a269 100%);
+            color: white; text-decoration: none; border-radius: 50px;
+            font-size: 18px; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 0.5px; box-shadow: 0 8px 30px rgba(46, 194, 126, 0.4);
+            transition: all 0.2s; border: none; cursor: pointer;
+        }
+        .final-cta-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(46, 194, 126, 0.5); }
+        .final-cta-btn:active { transform: translateY(0); }
+
+        /* Footer */
+        .footer {
+            background: var(--text); color: rgba(255,255,255,0.6);
+            padding: 40px 20px; text-align: center; font-size: 13px;
+        }
+        .footer a { color: rgba(255,255,255,0.8); text-decoration: none; margin: 0 12px; }
+        .footer a:hover { color: white; text-decoration: underline; }
+        .footer p { margin-bottom: 12px; }
+        .footer-disclaimer {
+            max-width: 800px; margin: 20px auto 0; padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px;
+            line-height: 1.6; color: rgba(255,255,255,0.4);
+        }
+
+        /* Exit Popup */
+        .exit-popup {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7); z-index: 2000; align-items: center;
+            justify-content: center; padding: 20px;
+        }
+        .exit-popup.active { display: flex; }
+        .exit-popup-content {
+            background: white; border-radius: 20px; padding: 40px;
+            max-width: 500px; width: 100%; text-align: center;
+            position: relative; animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .exit-popup-close {
+            position: absolute; top: 16px; right: 16px; width: 36px; height: 36px;
+            border-radius: 50%; border: none; background: var(--bg-light); cursor: pointer;
+            font-size: 20px; color: var(--text-light); display: flex;
+            align-items: center; justify-content: center;
+        }
+        .exit-popup h3 { font-size: 1.5rem; font-weight: 800; color: var(--warning); margin-bottom: 12px; }
+        .exit-popup p { color: var(--text-light); margin-bottom: 24px; font-size: 15px; }
+        .exit-popup .cta-btn {
+            display: inline-block; padding: 16px 40px; background: var(--warning);
+            color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 16px;
+        }
+
+        /* Animations */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* Loading */
+        .loading-overlay {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.9); z-index: 3000;
+            align-items: center; justify-content: center; flex-direction: column;
+        }
+        .loading-overlay.active { display: flex; }
+        .spinner {
+            width: 50px; height: 50px; border: 4px solid var(--border);
+            border-top-color: var(--primary); border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-overlay p { margin-top: 16px; color: var(--text-light); font-weight: 600; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .section { padding: 60px 16px; }
+            .countdown-box { padding: 16px 20px; min-width: 70px; }
+            .countdown-number { font-size: 2rem; }
+            .problem-card { padding: 24px; }
+            .review-card { padding: 24px; }
+            .exit-popup-content { padding: 28px 20px; }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute; width: 1px; height: 1px; padding: 0;
+            margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0);
+            white-space: nowrap; border: 0;
+        }
+        button:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid var(--primary); outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Header -->
+    <header class="sticky-header" id="stickyHeader">
+        <div class="sticky-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+            HomeWaterTest
+        </div>
+        <button class="sticky-cta" onclick="scrollToForm()">Get Free Test &rarr;</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="urgency-bar">
+                    <span class="icon">&#9888;&#65039;</span>
+                    <p><span class="spots" id="heroSpots">37</span> free water tests remaining this month in <span id="heroLocation">your area</span></p>
+                </div>
+
+                <h1>
+                    Is Your Family Drinking <span class="highlight">Contaminated Water</span>?
+                </h1>
+
+                <p class="hero-subtitle">
+                    <strong>95% of US homes</strong> have dangerous contaminants in their tap water including lead, PFAS, and arsenic. Get your <strong>free water quality test</strong> from certified local experts in under 60 seconds.
+                </p>
+
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        EPA Certified
+                    </div>
+                    <div class="trust-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        BBB Accredited
+                    </div>
+                    <div class="trust-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        No Obligation
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-form">
+                <div class="form-card" id="leadForm">
+                    <div class="form-header">
+                        <h2>&#128688; Free Water Test</h2>
+                        <p>Fill out the form below - takes 60 seconds</p>
+                    </div>
+
+                    <form id="waterTestForm" onsubmit="handleSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required placeholder="John" autocomplete="given-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required placeholder="Smith" autocomplete="family-name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567" autocomplete="tel" pattern="[\(]?[0-9]{3}[\)]?[-\s]?[0-9]{3}[-\s]?[0-9]{4}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="john@email.com" autocomplete="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="zipCode">ZIP Code *</label>
+                            <input type="text" id="zipCode" name="zipCode" required placeholder="12345" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code">
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            Get My Free Water Test &rarr;
+                        </button>
+
+                        <div class="form-footer">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            100% Free. No obligation. No spam.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section" id="problems">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <h2>What's Really in Your Tap Water?</h2>
+                <p>The EPA has identified over 80 contaminants in US drinking water that pose serious health risks. Here's what might be flowing from your faucet right now:</p>
+            </div>
+
+            <div class="problems-grid">
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">&#129514;</div>
+                    <h3>Lead & Heavy Metals</h3>
+                    <p>Corroding pipes can leach lead into your water, causing developmental issues in children and cardiovascular problems in adults. Even safe levels accumulate over time.</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">&#9760;&#65039;</div>
+                    <h3>PFAS "Forever Chemicals"</h3>
+                    <p>These toxic compounds don't break down in nature or your body. Linked to cancer, thyroid disease, and weakened immune systems. Found in 99% of Americans blood.</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">&#129440;</div>
+                    <h3>Bacteria & Viruses</h3>
+                    <p>Outdated infrastructure and treatment failures can introduce harmful microorganisms. E. coli, Legionella, and other pathogens cause 7.15 million illnesses yearly.</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">&#128138;</div>
+                    <h3>Pharmaceutical Residue</h3>
+                    <p>Traces of antibiotics, hormones, and painkillers pass through water treatment. These endocrine disruptors affect fertility, metabolism, and child development.</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">&#129524;</div>
+                    <h3>Chlorine & Disinfectants</h3>
+                    <p>While killing bacteria, chlorine creates harmful byproducts linked to bladder cancer and miscarriages. That pool smell? It is a chemical reaction you should not drink.</p>
+                </div>
+
+                <div class="stat-highlight fade-in">
+                    <div class="stat-number">1 in 4</div>
+                    <div class="stat-label">US homes have dangerous contaminant levels above EPA safety limits</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section solution-section" id="solution">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <h2>How Your Free Water Test Works</h2>
+                <p>Simple, fast, and completely free. No obligation to buy anything.</p>
+            </div>
+
+            <div class="steps">
+                <div class="step fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Submit Your Info</h3>
+                    <p>Fill out the 60-second form with your name, phone, email, and ZIP code. We will match you with a certified local water technician.</p>
+                </div>
+
+                <div class="step fade-in">
+                    <div class="step-number">2</div>
+                    <h3>Schedule Your Test</h3>
+                    <p>A certified technician arrives at your home within 48 hours. They will test for 200+ contaminants using professional-grade equipment.</p>
+                </div>
+
+                <div class="step fade-in">
+                    <div class="step-number">3</div>
+                    <h3>Get Your Results</h3>
+                    <p>Receive a detailed water quality report. If contaminants are found, you will get a no-obligation quote for a filtration solution. No pressure, ever.</p>
+                </div>
+            </div>
+
+            <div class="section-header fade-in" style="margin-top: 60px;">
+                <h2 style="font-size: 1.75rem;">What is Included in Your Free Test</h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature fade-in">
+                    <div class="feature-check">&#10003;</div>
+                    <p>Comprehensive 200+ contaminant screening</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-check">&#10003;</div>
+                    <p>Lead, PFAS, arsenic & heavy metals check</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-check">&#10003;</div>
+                    <p>Bacteria, viruses & microbial testing</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-check">&#10003;</div>
+                    <p>pH balance & hardness analysis</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-check">&#10003;</div>
+                    <p>Detailed written report with recommendations</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-check">&#10003;</div>
+                    <p>No obligation, no credit card required</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-check">&#10003;</div>
+                    <p>EPA-certified technician visit</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-check">&#10003;</div>
+                    <p>Same-week appointment availability</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="section" id="reviews">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <h2>Trusted by Homeowners Across America</h2>
+                <p>Join thousands of families who discovered what was really in their water.</p>
+            </div>
+
+            <div class="overall-rating fade-in">
+                <div class="big-number">4.8</div>
+                <div class="stars-big">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>Based on 2,847 verified reviews from homeowners</p>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="review-card fade-in">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"I had no idea our water was so bad until the test. The technician found lead levels 3x the safe limit. We installed a filter the same week. My kids skin cleared up within days. Worth every penny and the test was completely free!"</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">SM</div>
+                        <div class="reviewer-info">
+                            <h4>Sarah M.</h4>
+                            <p>Austin, TX</p>
+                            <div class="verified-badge">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                                Verified Customer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card fade-in">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"The test was quick and professional. The technician explained everything in plain English no sales pressure at all. Found high chlorine levels that were causing my wife's hair to fall out. Fixed it with a simple under-sink filter."</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">RJ</div>
+                        <div class="reviewer-info">
+                            <h4>Robert J.</h4>
+                            <p>Phoenix, AZ</p>
+                            <div class="verified-badge">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                                Verified Customer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card fade-in">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"As a new mom, I was worried about formula preparation water. The test found PFAS in our supply something the city never told us about. Got a whole-house system and now I have total peace of mind. The free test probably saved my baby's health."</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">EK</div>
+                        <div class="reviewer-info">
+                            <h4>Emily K.</h4>
+                            <p>Denver, CO</p>
+                            <div class="verified-badge">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                                Verified Customer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card fade-in">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"I am a retired engineer and skeptical of free offers. This one is legit. The technician was knowledgeable, the equipment was professional-grade, and the report was thorough. No high-pressure sales just facts. Recommended it to my entire neighborhood."</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">DW</div>
+                        <div class="reviewer-info">
+                            <h4>David W.</h4>
+                            <p>Seattle, WA</p>
+                            <div class="verified-badge">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                                Verified Customer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card fade-in">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"Our water tasted like chlorine and left white residue everywhere. The test revealed hard water minerals and chemical byproducts. Got a softener + filter combo. Dishes are spotless now, and the coffee actually tastes good! Free test was the best decision."</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">LT</div>
+                        <div class="reviewer-info">
+                            <h4>Lisa T.</h4>
+                            <p>Miami, FL</p>
+                            <div class="verified-badge">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                                Verified Customer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card fade-in">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"Been buying bottled water for years because our tap smelled funny. The test found sulfur bacteria and iron. A simple carbon filter fixed everything. I am saving $200/month on bottled water and helping the environment. Wish I had done this years ago!"</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">MC</div>
+                        <div class="reviewer-info">
+                            <h4>Michael C.</h4>
+                            <p>Chicago, IL</p>
+                            <div class="verified-badge">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                                Verified Customer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Urgency Section -->
+    <section class="section urgency-section" id="urgency">
+        <div class="section-container">
+            <h2>&#9200; Do Not Wait Until It is Too Late</h2>
+            <p>Water contamination builds up silently. Every day you wait, your family drinks more toxins.</p>
+
+            <div class="countdown-container">
+                <div class="countdown-box">
+                    <span class="countdown-number" id="days">02</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="hours">14</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="minutes">33</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="seconds">47</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+
+            <div class="spots-remaining">
+                Only <span class="number" id="spotsRemaining">37</span> free tests remaining this month
+            </div>
+
+            <div class="neighbor-alert">
+                <span class="pulse-dot"></span>
+                <span id="neighborText">3 homeowners in your area booked tests today</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section" id="faq">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about your free water test.</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Is the water test really 100% free?
+                        <span class="icon">&#9660;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, absolutely. The water quality test is completely free with no hidden fees, no credit card required, and no obligation to purchase anything. Ember Home Pros connects you with certified local technicians who provide the test as a service to educate homeowners about their water quality. If you choose to install a filtration system after the test, that is entirely optional.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How long does the test take?
+                        <span class="icon">&#9660;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The in-home water test takes approximately 30-45 minutes. The technician will test multiple water sources in your home (kitchen, bathroom, outdoor taps) and use professional-grade equipment to check for 200+ contaminants. You will receive preliminary results immediately, with a detailed written report emailed within 24 hours.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What contaminants do you test for?
+                        <span class="icon">&#9660;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The comprehensive test screens for over 200 contaminants including: lead and heavy metals (arsenic, mercury, cadmium), PFAS forever chemicals, bacteria and viruses (E. coli, Legionella, coliform), chlorine and disinfection byproducts, pharmaceuticals and hormones, pesticides and herbicides, nitrates and nitrites, pH levels, water hardness, and total dissolved solids (TDS).</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do I need to be home during the test?
+                        <span class="icon">&#9660;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, an adult (18+) must be present during the test. The technician needs access to multiple water sources in your home and will want to discuss the results with you in person. The test cannot be completed if no one is home. You will receive a confirmation call 24 hours before the scheduled appointment.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What happens after the test?
+                        <span class="icon">&#9660;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>After the test, you will receive a detailed water quality report via email within 24 hours. If contaminants are found, the technician will provide a no-obligation quote for a customized filtration solution. You are under absolutely no pressure to buy anything. Many homeowners choose to install filters for peace of mind, but the decision is entirely yours.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Is my personal information secure?
+                        <span class="icon">&#9660;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. We use bank-level SSL encryption to protect your data. Your information is only shared with the certified local technician assigned to your area. We never sell your data to third parties, and you can request deletion of your information at any time. See our Privacy Policy for full details.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How quickly can I get an appointment?
+                        <span class="icon">&#9660;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Most appointments are available within 24-48 hours of submitting your request. Same-day appointments may be available in some areas depending on technician availability. You will see available time slots when you submit the form, and we send confirmation via text and email.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="finalCta">
+        <h2>Protect Your Family's Health Today</h2>
+        <p>Do not gamble with your family's safety. Find out what is in your water it is free, takes 60 seconds, and could save your health.</p>
+        <button class="final-cta-btn" onclick="scrollToForm()">Get My Free Water Test Now &rarr;</button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#contact">Contact Us</a>
+            <a href="#unsubscribe">Unsubscribe</a>
+        </p>
+        <p>&copy; 2026 HomeWaterTest. All rights reserved.</p>
+        <div class="footer-disclaimer">
+            <p>Ember Home Pros is a free service to assist homeowners in connecting with local service providers. All contractors/providers are independent and Ember Home Pros does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on emberhomepros.com. These results are not guarantees and may differ based on an individual's circumstances.</p>
+        </div>
+    </footer>
+
+    <!-- Exit Intent Popup -->
+    <div class="exit-popup" id="exitPopup">
+        <div class="exit-popup-content">
+            <button class="exit-popup-close" onclick="closeExitPopup()">&times;</button>
+            <h3>&#9888;&#65039; Wait! Do Not Risk Your Family's Health</h3>
+            <p>Water contamination is silent and dangerous. Every day you wait, your family drinks more toxins. Get your free test now it takes 60 seconds and could save your health.</p>
+            <a href="#hero" class="cta-btn" onclick="closeExitPopup(); scrollToForm(); return false;">Get Free Test Now &rarr;</a>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Submitting your request...</p>
+    </div>
+
+    <script>
+        // ===== DYNAMIC LOCATION =====
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                city: params.get('city') || 'your area',
+                state: params.get('state') || '',
+                zip: params.get('zip') || ''
+            };
+        }
+
+        function updateLocation() {
+            const loc = getUrlParams();
+            const locationText = loc.city && loc.state ? loc.city + ', ' + loc.state : loc.city || 'your area';
+
+            document.querySelectorAll('#heroLocation, #neighborText').forEach(el => {
+                if (el.id === 'neighborText') {
+                    el.textContent = '3 homeowners in ' + (loc.city || 'your area') + ' booked tests today';
+                } else {
+                    el.textContent = locationText;
+                }
+            });
+        }
+
+        // ===== STICKY HEADER =====
+        let lastScroll = 0;
+        const stickyHeader = document.getElementById('stickyHeader');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 400) {
+                stickyHeader.classList.add('visible');
+            } else {
+                stickyHeader.classList.remove('visible');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // ===== SCROLL TO FORM =====
+        function scrollToForm() {
+            document.getElementById('leadForm').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ===== COUNTDOWN TIMER =====
+        function updateCountdown() {
+            const now = new Date();
+            const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+            const diff = endOfMonth - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // ===== SPOTS REMAINING (decreasing) =====
+        let spots = 37;
+        function decreaseSpots() {
+            if (spots > 3 && Math.random() > 0.7) {
+                spots--;
+                document.getElementById('spotsRemaining').textContent = spots;
+                document.getElementById('heroSpots').textContent = spots;
+            }
+        }
+        setInterval(decreaseSpots, 15000);
+
+        // ===== FAQ TOGGLE =====
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const isActive = item.classList.contains('active');
+
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+            // Open clicked if wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // ===== EXIT INTENT POPUP =====
+        let exitShown = false;
+
+        document.addEventListener('mouseleave', (e) => {
+            if (e.clientY < 10 && !exitShown) {
+                document.getElementById('exitPopup').classList.add('active');
+                exitShown = true;
+
+                // Track exit intent
+                fbq('trackCustom', 'ExitIntentShown');
+            }
+        });
+
+        function closeExitPopup() {
+            document.getElementById('exitPopup').classList.remove('active');
+        }
+
+        // Close on backdrop click
+        document.getElementById('exitPopup').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeExitPopup();
+            }
+        });
+
+        // ===== FORM HANDLING =====
+        function handleSubmit(e) {
+            e.preventDefault();
+
+            const form = document.getElementById('waterTestForm');
+            const btn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loadingOverlay');
+
+            // Validate
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const zipCode = document.getElementById('zipCode').value.trim();
+
+            // Phone validation
+            const phoneRegex = /^[\(]?[0-9]{3}[\)]?[-\s]?[0-9]{3}[-\s]?[0-9]{4}$/;
+            if (!phoneRegex.test(phone)) {
+                alert('Please enter a valid US phone number: (555) 123-4567');
+                document.getElementById('phone').focus();
+                return;
+            }
+
+            // ZIP validation
+            if (!/^\d{5}$/.test(zipCode)) {
+                alert('Please enter a valid 5-digit ZIP code');
+                document.getElementById('zipCode').focus();
+                return;
+            }
+
+            // Show loading
+            loading.classList.add('active');
+
+            // Track Facebook Lead event
+            fbq('track', 'Lead', {
+                content_name: 'Water Test Form',
+                content_category: 'Home Services',
+                value: 25.00,
+                currency: 'USD'
+            });
+
+            // Track Google Analytics conversion
+            gtag('event', 'generate_lead', {
+                'event_category': 'form',
+                'event_label': 'water_test',
+                'value': 25
+            });
+
+            // Simulate submission (replace with actual API call)
+            setTimeout(() => {
+                loading.classList.remove('active');
+
+                // Build redirect URL with tracking parameters
+                // Replace with your actual CPV Lab campaign URL or offer URL
+                const offerUrl = 'https://vaultmediainc10211905.o18.link/c?o=21391578&m=20197&a=764129&aff_click_id={REPLACE}&sub_aff_id={REPLACE}';
+
+                // For now, show thank you (in production, redirect to offer)
+                alert('Thank you! Your request has been submitted. You will be redirected to schedule your free water test.');
+
+                // Uncomment for production redirect:
+                // window.location.href = offerUrl;
+
+            }, 2000);
+        }
+
+        // ===== SCROLL ANIMATIONS =====
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ===== INIT =====
+        document.addEventListener('DOMContentLoaded', () => {
+            updateLocation();
+        });
+    </script>
+</body>
+</html>
